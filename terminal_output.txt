@@ -1,0 +1,47 @@
+10 threads will be created.
+Each thread will enqueue and dequeue 10 Runnables.
+If each queue is thread-safe, then the number of Runnables in the queue should be 0 at the end of the test.
+Test results for lockQueue:
+Thread-safe test: true with size: 0
+Test results for syncQueue:
+Thread-safe test: true with size: 0
+Test results for unsafeQueue:
+Exception in thread "Thread-25" java.util.NoSuchElementException 
+        at java.base/java.util.LinkedList.removeFirst(LinkedList.java:274)
+        at java.base/java.util.LinkedList.remove(LinkedList.java:689)
+        at UnsafeQueue.dequeue(UnsafeQueue.java:21)
+        at BlockingQueueTester.lambda$0(BlockingQueueTester.java:38)
+        at java.base/java.lang.Thread.run(Thread.java:834)       
+Thread-safe test: false with size: 1
+
+Blocking when empty test for lockQueue:
+Started consumer at 1682522296
+Main sleeping for 1 seconds before starting producer
+Started producer at 1682522297
+Dequeued Runnable at 1682522297
+Final queue size: 0
+Test is successful if consumer also waits for 1 second before dequeuing another runnable, even though it is already running.      
+Blocking when empty test for syncQueue:
+Started consumer at 1682522297
+Main sleeping for 1 seconds before starting producer
+Started producer at 1682522298
+Dequeued Runnable at 1682522298
+Final queue size: 0
+Test is successful if consumer also waits for 1 second before dequeuing another runnable, even though it is already running.      
+
+Blocking when full test for lockQueue:
+Queue is FULL
+Started producer at 1682522298
+Main sleeping for 1 seconds before starting consumer
+Started consumer at 1682522299
+Enqueued Runnable at 1682522299
+Final queue size: 5
+Test is successful if producer also waits for 1 second before enqueuing another runnable, even though it is already running.      
+Blocking when full test for syncQueue:
+Queue is FULL
+Started producer at 1682522299
+Main sleeping for 1 seconds before starting consumer
+Started consumer at 1682522300
+Enqueued Runnable at 1682522300
+Final queue size: 5
+Test is successful if producer also waits for 1 second before enqueuing another runnable, even though it is already running.
