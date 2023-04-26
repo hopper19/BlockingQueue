@@ -8,6 +8,8 @@
 
 interface BlockingQueue {
     void enqueue(Runnable item);
+
     Runnable dequeue();
+
     int size();
 }

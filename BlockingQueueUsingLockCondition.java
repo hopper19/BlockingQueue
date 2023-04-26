@@ -8,11 +8,11 @@ public class BlockingQueueUsingLockCondition implements BlockingQueue {
   private Lock lock = new ReentrantLock();
   private Condition queueFull = lock.newCondition();
   private Condition queueEmpty = lock.newCondition();
-  
+
   /*
-    * The constructor of the class accepts a parameter to specify the capacity of
-    * the queue.
-    */
+   * The constructor of the class accepts a parameter to specify the capacity of
+   * the queue.
+   */
   public BlockingQueueUsingLockCondition(int capacity) {
     this.capacity = capacity;
     queue = new LinkedList<Runnable>();

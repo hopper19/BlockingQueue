@@ -1,9 +1,8 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
-
 /* This queue is not threadsafe  */
-public class UnsafeQueue implements BlockingQueue{
+public class UnsafeQueue implements BlockingQueue {
 
   private Queue<Runnable> queue;
 
@@ -25,5 +24,5 @@ public class UnsafeQueue implements BlockingQueue{
   public int size() {
     return queue.size();
   }
-  
+
 }
